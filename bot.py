@@ -14,7 +14,7 @@ nickname = "twitchusername";
 #DEFINE KEYPRESS
 def keypress(key):
 	global shell, count
-	subprocess.call("autohotkey actions/"+key+".ahk");
+	subprocess.call("autohotkey "+key+".ahk");
 #END KEYPRESS
 
 #DEFINE PARSER
@@ -30,36 +30,11 @@ def parse(line):
 				return;
 			msg  = line.split(" ")[3].strip(":");
 			user = line.split(" ")[0].split("!")[0].strip(":");
-			if msg=="r":
-				keypress("r");
-				print(user+": r");
-			elif msg=="l":
-				keypress("l");
-				print(user+": l");
-			elif msg=="up":
+			
+			# example keypress
+			if msg=="up":
 				keypress("up");
 				print(user+": up");
-			elif msg=="down":
-				keypress("down");
-				print(user+": down");
-			elif msg=="left":
-				keypress("left");
-				print(user+": left");
-			elif msg=="right":
-				keypress("right");
-				print(user+": right");
-			elif msg=="a":
-				keypress("a");
-				print(user+": a");
-			elif msg=="b":
-				keypress("b");
-				print(user+": b");
-			elif msg=="select":
-				keypress("select");
-				print(user+": select");
-			elif msg=="start":
-				keypress("start");
-				print(user+": start");
 #END PARSER
 
 shell = win32com.client.Dispatch("WScript.Shell");
